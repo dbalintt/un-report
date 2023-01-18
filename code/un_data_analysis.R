@@ -112,9 +112,18 @@ gapminder_data_2007 <- read_csv("data/gapminder_data.csv")%>%
 #if no by argument, will join based on all matching column names between dataframes
 #anti-join shows all non-matching data between dataframes, based on first dataframe in function
 #full join keeps all data from both dataframes regardless of matching
+#left join keeps all data from first dataframe and adds matching data from second dataframe
+
 inner_join(co2_emissions_2005, gapminder_data_2007, by ="country")
 
 anti_join(co2_emissions_2005, gapminder_data_2007)
 
 full_join(co2_emissions_2005, gapminder_data_2007)
 
+left_join(co2_emissions_2005,gapminder_data_2007)
+
+
+#write object to csv
+
+joined_co2_pop <- inner_join(co2_emissions_2005, gapminder_data_2007, by ="country")
+write_csv(joined_co2_pop, file="data/joined_co2_pop.csv")

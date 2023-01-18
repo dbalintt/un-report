@@ -127,3 +127,35 @@ left_join(co2_emissions_2005,gapminder_data_2007)
 
 joined_co2_pop <- inner_join(co2_emissions_2005, gapminder_data_2007, by ="country")
 write_csv(joined_co2_pop, file="data/joined_co2_pop.csv")
+
+joined_co2_pop <- read_csv("data/joined_co2_pop.csv")
+
+
+#create histogram to explore variable distributions before plotting
+
+ggplot(data=joined_co2_pop)+
+  aes(x=gdpPercap)+
+  geom_histogram(bins=20)+
+  theme_prism()
+
+ggplot(data=joined_co2_pop)+
+  aes(x=per_capita_emissions)+
+  geom_histogram(bins=20)+
+  theme_prism()
+
+#plot data
+
+ggplot(data=joined_co2_pop)+
+  aes(x=gdpPercap, y=per_capita_emissions)+
+  labs(x="GDP per capita",y="Emissions per capita", title="Stong relationship between GDP vs Emissions")+
+  geom_point()+
+  geom_smooth(method="lm", se=FALSE)+
+  theme_prism()+
+  ggpubr::stat_regline_equation(aes(label=..rr.label..))
+
+#ggpubr:: shows all functions of library useful in publications
+
+
+
+
+

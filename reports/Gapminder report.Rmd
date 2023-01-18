@@ -1,0 +1,29 @@
+---
+title: "A UN Report on the relationship between GDP and Emmissions"
+author: "Diana"
+date: "2023-01-18"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r load-packages}
+library(tidyverse)
+```
+
+This report was prepared for the UN blah blah blah...
+
+```{r read-data}
+gapminder_1997 <- read_csv("data/gapminder_1997.csv")
+```
+
+```{r gdp-lifeexp-1997-plot}
+#make plot of GDP vs life Exp
+ggplot(data=gapminder_1997)+
+  aes(x=gdpPercap,y=lifeExp)+
+  labs(x="GDP per capita",y="Life Expectancy (years)",title="GDP vs Life Expectancy 1997")+
+  geom_point()
+```
+

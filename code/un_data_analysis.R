@@ -81,7 +81,7 @@ gapminder_data%>%
 #skip first row of data to exclude unneccessary data and specify own column names 
 #c (concatenate) function for lists so arguments don't get confused with commas
 co2_emissions_dirty <- read_csv("data/co2-un-data.csv", skip=2,
-         col_names=c("region","country","year","series","value","footnotes","source"))
+                                col_names=c("region","country","year","series","value","footnotes","source"))
 
 #read.csv and read_csv different functions, using read_csv right now from readr package
 
@@ -117,5 +117,4 @@ inner_join(co2_emissions_2005, gapminder_data_2007, by ="country")
 anti_join(co2_emissions_2005, gapminder_data_2007)
 
 full_join(co2_emissions_2005, gapminder_data_2007)
-
 
